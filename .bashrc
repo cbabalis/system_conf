@@ -64,5 +64,9 @@ function parse_git_dirty {
 		echo ""
 	fi
 }
+export LS_OPTIONS='--color=auto'                                                
+eval "`dircolors`"                                                              
+alias ls='ls $LS_OPTIONS'
+
 
 export PS1="\[\e[36m\]\u\[\e[m\]@\[\e[36m\]\h\[\e[m\]:\[\e[35m\]\A\[\e[m\]:\[\e[32m\]\w\[\e[m\]:\[\e[31m\]\`parse_git_branch\`\[\e[m\]\\$ "
