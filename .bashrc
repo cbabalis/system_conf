@@ -1,11 +1,12 @@
 #/bin/bash
 
 # for history, append all commands from each terminal
-shopt -s histappend
-export HISTSIZE=10000
-export HISEFILESIZE=10000
+
 export HISTCONTROL=ignorespace:erasedups
 export HISTIGNORE="ls:ps:history"
+export HISTSIZE=10000
+export HISEFILESIZE=10000
+shopt -s histappend
 
 function parse_git_branch() {
 	BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
