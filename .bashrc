@@ -70,4 +70,11 @@ eval "`dircolors`"
 alias ls='ls $LS_OPTIONS'
 
 
-export PS1="\[\e[36m\]\u\[\e[m\]@\[\e[36m\]\h\[\e[m\]:\[\e[35m\]\A\[\e[m\]:\[\e[32m\]\w\[\e[m\]:\[\e[31m\]\`parse_git_branch\`\[\e[m\]\\$ "
+#export PS1="\[\e[36m\]\u\[\e[m\]@\[\e[36m\]\h\[\e[m\]:\[\e[35m\]\A\[\e[m\]:\[\e[32m\]\w\[\e[m\]:\[\e[31m\]\`parse_git_branch\`\[\e[m\]\\$ "
+
+function _update_ps1() {
+    PS1="$(~/powerline-shell.py $? 2> /dev/null)"
+}
+
+if [ "$TERM" != "linux" ]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
